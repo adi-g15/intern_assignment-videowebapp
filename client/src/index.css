@@ -1,0 +1,68 @@
+body {
+    min-height: 100vh;
+    height: 100%;
+    background: linear-gradient(#3f51b5, white);
+    /* background: no-repeat fixed center url("../assets/bg.jpg"); */
+    background-size: cover;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    /* color: whitesmoke */
+}
+
+.logo {
+    align-self: center;
+}
+
+.appbar {
+    position: relative ;
+}
+
+.appbar_cont {
+    display: flex ;
+    justify-content: space-between ;
+}
+
+#container {
+	max-height: 800px;
+    min-height: 75vh;
+}
+
+.chart {
+    cursor: crosshair;
+}
+
+.chart_container {
+    padding-left: 24px;
+    padding-right: 24px;
+    display: block;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    min-width: 750px;
+}
+
+.compare_table {
+    width: 70%;
+    min-width: 750px;
+    display: block;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.MuiOutlinedInput-notchedOutline {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
