@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const videoModel = require("../models/video");
-const topicModel = require("../models/topic");
+const {random_video_list}  = require("../util/video");
 
 /**
  * From SO: https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array#6274398
@@ -25,13 +25,20 @@ function shuffle(a) {
  */
 router.get('/auto-complete', async (req, res) => {
     const search = req.query.search;
+    if(typeof search !== 'string') {
+        return res.sendStatus(304);
+    } else if(search === '') {
+        return res.json({
+            results: random_video_list(10)
+        })
+    }
 
     // search for each word till we have more than 10 results
     const results = [];
     const words = shuffle(  // to have random importance of words each time
         search.split(' ')
     );
-    words.forEach(word => {
+    for(const word of words) {
         const regex = new RegExp(word);
         await videoModel.find({name: regex}).lean().limit(10)
                     .then(docs => {
@@ -46,7 +53,7 @@ router.get('/auto-complete', async (req, res) => {
         if(results.length >= 10){
             break;
         }
-    });
+    }
 
     res.json({
         results

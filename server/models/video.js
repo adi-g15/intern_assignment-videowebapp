@@ -3,7 +3,7 @@ const { Schema, model } = require("mongoose");
 const topicModel = require("./topic.js");
 
 const video = new Schema({
-	title: {
+	name: {
 		type: String,
 		required: true,
 		unique: true
@@ -27,9 +27,9 @@ const video = new Schema({
 	}
 });
 
-video.post("save", async function () {
+video.post("save", function () {
     topicModel.findOne({name: this.topic})
-                .then(doc => {
+                .then(async doc => {
                     if(!doc) {
                         // create topic
                         await topicModel.create([{
